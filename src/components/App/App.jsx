@@ -32,9 +32,7 @@ function App() {
 
   const totalFeedback = count.good + count.neutral + count.bad;
 
-  const positiveFeedback = Math.round(
-    ((count.good + count.neutral) / totalFeedback) * 100
-  );
+  const positiveFeedback = Math.round((count.good / totalFeedback) * 100);
 
   return (
     <div className={css.container}>
@@ -52,7 +50,7 @@ function App() {
           positiveFeedback={positiveFeedback}
         />
       )}
-      {!totalFeedback && <Notification />}
+      {totalFeedback === 0 && <Notification />}
     </div>
   );
 }
